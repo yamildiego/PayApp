@@ -5,11 +5,7 @@
  */
 package payapp;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
@@ -38,18 +34,8 @@ public class BoardListener implements ClipboardOwner {
         return result;
     }
 
-    public void setClipboardContents(String string) {
-        StringSelection stringSelection = new StringSelection(string);
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        clipboard.setContents(stringSelection, this);
-    }
-
     @Override
     public void lostOwnership(Clipboard clipboard, Transferable contents) {
         // TODO Auto-generated method stub
-    }
-
-    private static void log(String msg) {
-        System.out.println(msg);
     }
 }

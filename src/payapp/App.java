@@ -2,20 +2,32 @@ package payapp;
 
 import java.awt.Robot;
 import java.awt.event.InputEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class App {
+public class App implements Runnable {
+
+    private static App instance = null;
 
     public Robot robot = null;
     public Boolean error = false;
     public Boolean ispay = false;
     public BoardListener clip = null;
 
+    public static App getInstance() {
+        if (instance == null) {
+            instance = new App();
+        }
+        return instance;
+    }
+
+    @Override
     public void run() {
-//        ispay = false;
-//        while (ispay == false) {
-//            error = false;
-        myExecute();
-//        }
+        ispay = false;
+        while (ispay == false) {
+            error = false;
+            myExecute();
+        }
     }
 
     public void myExecute() {
@@ -40,13 +52,15 @@ public class App {
             }
 
             //posiciono para pegar la url
-            robot.mouseMove(500, 50);
+//            robot.mouseMove(500, 50);
+            robot.mouseMove(380, 78);
             clip = new BoardListener();
-            clip.setClipboardContents("https://onlineservices.immigration.govt.nz/WorkingHoliday/default.aspx");
-
-            //pego la url con click derecho PEGAR Y BUSCAR
-            myClicDerecho();
-            robot.mouseMove(540, 170);
+////            clip.setClipboardContents("https://onlineservices.immigration.govt.nz/WorkingHoliday/default.aspx");
+////
+//////            pego la url con click derecho PEGAR Y BUSCAR
+////            myClicDerecho();
+////            robot.mouseMove(540, 170);
+//            robot.mouseMove(540, 170);
             try {
                 myClic();
             } catch (InterruptedException ex) {
