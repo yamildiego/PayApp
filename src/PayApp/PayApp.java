@@ -1,4 +1,4 @@
-package payapp;
+package PayApp;
 
 public class PayApp {
 
